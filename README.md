@@ -2,6 +2,8 @@
 
 A chess clock web app with custom timer settings.
 
+![readme-image](https://user-images.githubusercontent.com/17503393/140434323-4f19c0c7-be72-4869-a8d5-321bb6344d4c.png)
+
 ## Requirements
 
 - Angular 8+
