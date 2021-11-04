@@ -34,7 +34,7 @@ export class PlayerTimerComponent implements OnInit {
     disableClock = false;
 
     ngOnInit() {
-        this.currentTime = dayjs().minute(0).second(5);
+        this.currentTime = dayjs().minute(this.totalTime).second(0);
     }
 
     start() {
