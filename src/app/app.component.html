@@ -1,0 +1,67 @@
+<div class="d-flex flex-column justify-content-center mx-auto w-75 h-100">
+    <!-- Buttons -->
+    <div class="d-flex flex-row mb-3">
+        <div class="tooltip-icon align-self-end mr-auto">
+            <i class="bi bi-info-circle" data-toggle="tooltip" data-placement="right"
+               title='Press "Enter" to pass your turn and "Backspace" to reset the clock'></i>
+        </div>
+        <div class="btn btn-dark btn-lg mr-2" (click)="resetTimers()">
+            <i class="bi bi-arrow-repeat"></i>
+        </div>
+        <div class="btn btn-dark btn-lg mr-2" data-toggle="modal" data-target="#settingsModal">
+            <i class="bi bi-gear"></i>
+        </div>
+        <div class="btn btn-dark btn-lg" (click)="muteAudio = !muteAudio">
+            <i class="bi bi-volume-up" [ngClass]="{'bi-volume-up': !muteAudio, 'bi-volume-mute': muteAudio}"></i>
+        </div>
+    </div>
+    <!-- Clock -->
+    <div class="clock player1">
+        <app-player-timer #player1 (startOtherPlayerTimerEvent)="onStartOtherPlayerTimer($event)"
+                          (endgameEvent)="onEndgameEvent($event)" [player]="'player1'" [totalTime]="totalTime"
+                          [increment]="increment"></app-player-timer>
+    </div>
+    <div class="clock player2">
+        <app-player-timer #player2 (startOtherPlayerTimerEvent)="onStartOtherPlayerTimer($event)"
+                          (endgameEvent)="onEndgameEvent($event)" [player]="'player2'" [totalTime]="totalTime"
+                          [increment]="increment"></app-player-timer>
+    </div>
+</div>
+
+<!-- Settings modal -->
+<div class="modal fade" id="settingsModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Settings</h5>
+                <div data-dismiss="modal">
+                    <span>&times;</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="settingsForm">
+                    <div class="form-group">
+                        <label for="totalTime">Total (minutes)</label>
+                        <input type="number" class="form-control"
+                               [ngClass]="{'border-danger': settingsForm.controls.totalTime.invalid}" id="totalTime"
+                               formControlName="totalTime">
+                        <small class="form-text text-muted">Number between 1 and 60</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="increment">Increment (seconds)</label>
+                        <input type="number" class="form-control"
+                               [ngClass]="{'border-danger': settingsForm.controls.increment.invalid}" id="increment"
+                               formControlName="increment">
+                        <small class="form-text text-muted">Number between 0 and 30</small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="btn btn-secondary" data-dismiss="modal">Close</div>
+                <button class="btn btn-dark" [disabled]="settingsForm.invalid" data-dismiss="modal"
+                        (click)="saveSettings()">Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,4 @@
+<!-- Timer -->
+<button class="blank-button d-flex justify-content-center align-items-center h-100"
+        [ngClass]="{'focus-border': focusClock}" [disabled]="disableClock"
+        (click)="startOtherPlayerTimer()">{{currentTime | date: 'mm:ss'}}</button>

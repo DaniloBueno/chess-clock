@@ -1,0 +1,38 @@
+.tooltip-icon {
+    color: white;
+    cursor: pointer;
+}
+
+.clock {
+    height: 40%;
+    cursor: pointer;
+    color: white;
+    font-size: 12vh;
+}
+
+.player1 {
+    background: #0d1e2d;
+    transform: scale(-1, -1);
+    -moz-transform: scale(-1, -1);
+    -webkit-transform: scale(-1, -1);
+    -o-transform: scale(-1, -1);
+    -ms-transform: scale(-1, -1);
+}
+
+.player2 {
+    background: #426f93;
+}
+
+.modal-content {
+    background: #183854;
+    color: white;
+}
+
+.modal-header span {
+    cursor: pointer;
+    color: white;
+}
+
+.modal-body input {
+    width: 100px;
+}
